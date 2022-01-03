@@ -11,7 +11,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import { OpenInFull, Upload, OpenInBrowser } from "@mui/icons-material";
+import { OpenInFull, OpenInBrowser } from "@mui/icons-material";
 
 const markdownPath = "defaultMarkdown.md"; // relative to public folder
 
