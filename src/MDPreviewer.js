@@ -122,7 +122,11 @@ function MDPreviewer() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: `${dimensions["leftPane"]}px 10px auto`,
+          gridTemplateColumns: editorFS
+            ? "auto 0 0"
+            : previewerFS
+            ? "0 0 auto"
+            : `${dimensions["leftPane"]}px 10px auto`,
         }}
       >
         <Card sx={{ display: "flex", flexDirection: "column" }}>
