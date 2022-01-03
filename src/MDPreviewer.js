@@ -68,6 +68,14 @@ function MDPreviewer() {
     ),
   });
 
+  const toggleEditorFS = (e) => {
+    setEditorFS(!editorFS);
+  };
+
+  const togglePreviewerFS = (e) => {
+    setPreviewerFS(!previewerFS);
+  };
+
   // Handling Markdown
 
   const [markdown, setMarkdown] = useState("");
@@ -114,7 +122,11 @@ function MDPreviewer() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: `${dimensions["leftPane"]}px 10px auto`,
+          gridTemplateColumns: editorFS
+            ? "auto 0 0"
+            : previewerFS
+            ? "0 0 auto"
+            : `${dimensions["leftPane"]}px 10px auto`,
         }}
       >
         <Card sx={{ display: "flex", flexDirection: "column" }}>
@@ -125,7 +137,7 @@ function MDPreviewer() {
                 <IconButton>
                   <OpenInBrowser />
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={toggleEditorFS}>
                   <OpenInFull />
                 </IconButton>
               </>
@@ -140,7 +152,7 @@ function MDPreviewer() {
           <CardHeader
             title="Previewer"
             action={
-              <IconButton>
+              <IconButton onClick={togglePreviewerFS}>
                 <OpenInFull />
               </IconButton>
             }
