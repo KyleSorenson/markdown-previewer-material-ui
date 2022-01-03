@@ -44,9 +44,6 @@ const Editor = styled("textarea")(({ theme }) => ({
 function MDPreviewer() {
   // Handling Resize
 
-  const [editorFS, setEditorFS] = useState(false);
-  const [previewerFS, setPreviewerFS] = useState(false);
-
   const calculateLeftPane = (windowInnerWidth) => {
     const padding = 24;
     const percent = 0.4;
@@ -67,6 +64,30 @@ function MDPreviewer() {
       calculateLeftPane(window.innerWidth)
     ),
   });
+
+  const [editorFS, setEditorFS] = useState(false);
+  const [previewerFS, setPreviewerFS] = useState(false);
+  const [templateCols, setTemplateCols] = useState(
+    `${dimensions["leftPane"]}px 10px auto`
+  );
+
+  useEffect(() => {
+    if (editorFS) {
+      setTemplateCols(`auto 0 0`);
+    } else if (previewerFS) {
+      setTemplateCols(`0 0 auto`);
+    } else {
+      setTemplateCols(`${dimensions["leftPane"]}px 10px auto`);
+    }
+  }, [templateCols, editorFS, previewerFS]);
+
+  const handleEditorFS = (e) => {
+    setEditorFS(!editorFS);
+  };
+
+  const handlePreviewerFS = (e) => {
+    setPreviewerFS(!previewerFS);
+  };
 
   // Handling Markdown
 
@@ -114,7 +135,7 @@ function MDPreviewer() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: `${dimensions["leftPane"]}px 10px auto`,
+          gridTemplateColumns: templateCols,
         }}
       >
         <Card sx={{ display: "flex", flexDirection: "column" }}>
@@ -125,7 +146,7 @@ function MDPreviewer() {
                 <IconButton>
                   <OpenInBrowser />
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={handleEditorFS}>
                   <OpenInFull />
                 </IconButton>
               </>
@@ -140,7 +161,7 @@ function MDPreviewer() {
           <CardHeader
             title="Previewer"
             action={
-              <IconButton>
+              <IconButton onClick={handlePreviewerFS}>
                 <OpenInFull />
               </IconButton>
             }
