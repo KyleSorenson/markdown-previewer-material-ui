@@ -148,7 +148,7 @@ function MDPreviewer() {
           <CardHeader
             title="Previewer"
             action={
-              <IconButton onClick={toggleEditorFS}>
+              <IconButton onClick={togglePreviewerFS}>
                 <OpenInFull />
               </IconButton>
             }
