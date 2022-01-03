@@ -9,7 +9,10 @@
 - ~~Live typing / updating~~
 - ~~Pane resizing~~
 - ~~Importing markdown from an .md file~~
+- ~~Fill window toggle for each pane~~
+- Media Query Breaks (for Mobile)
+- Ability to upload markdown file
+- Ability to drag and drop markdown file
 - Syntactic highlighting
 - Code copy button on hover (like GitHub)
-- Fill window toggle for each pane
 - Better styling (Material UI?)
