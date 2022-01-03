@@ -68,6 +68,14 @@ function MDPreviewer() {
     ),
   });
 
+  const toggleEditorFS = (e) => {
+    setEditorFS(!editorFS);
+  };
+
+  const togglePreviewerFS = (e) => {
+    setPreviewerFS(!previewerFS);
+  };
+
   // Handling Markdown
 
   const [markdown, setMarkdown] = useState("");
@@ -125,7 +133,7 @@ function MDPreviewer() {
                 <IconButton>
                   <OpenInBrowser />
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={toggleEditorFS}>
                   <OpenInFull />
                 </IconButton>
               </>
@@ -140,7 +148,7 @@ function MDPreviewer() {
           <CardHeader
             title="Previewer"
             action={
-              <IconButton>
+              <IconButton onClick={toggleEditorFS}>
                 <OpenInFull />
               </IconButton>
             }
